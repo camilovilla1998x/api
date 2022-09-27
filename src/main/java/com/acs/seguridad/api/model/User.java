@@ -1,21 +1,52 @@
 package com.acs.seguridad.api.model;
 
-public class security {
+public class User {
+    public User(String id) {
+        this.id = id;
+    }
 
-    private int id;
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    private String id;
     private String userType;
     private String firstName;
     private String lastName;
     private String documentType;
     private int documentNumber;
     private String StoreName;
+    //Pedido del equipo de Sebas
+    private int maxSell;
+    //Variable Henry
+    private String idShoppingCart;
 
-    public int getId() {
-        return id;
+    public User(int maxSell) {
+        this.maxSell = maxSell;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public int getMaxSell() {
+        return maxSell;
+    }
+
+    public void setMaxSell(int maxSell) {
+        this.maxSell = maxSell;
+    }
+
+    public User() {
+
+    }
+
+    public String getIdShoppingCart() {
+        return idShoppingCart;
+    }
+
+    public void setIdShoppingCart(String idShoppingCart) {
+        this.idShoppingCart = idShoppingCart;
     }
 
     public String getUserType() {
@@ -66,7 +97,7 @@ public class security {
         StoreName = storeName;
     }
 
-    public security(int id, String userType, String firstName, String lastName, String documentType, int documentNumber, String storeName) {
+    public User(String id, String userType, String firstName, String lastName, String documentType, int documentNumber, String storeName) {
         this.id = id;
         this.userType = userType;
         this.firstName = firstName;
