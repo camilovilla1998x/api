@@ -1,5 +1,6 @@
 package com.acs.seguridad.api.Service;
 
+
 import com.acs.seguridad.api.model.User;
 
 import java.util.List;
@@ -16,7 +17,7 @@ public interface UserService {
 
     User create(User user);
 
-    User update(String firstName, String LastName, String documentType, int documentNumber, User user);
+    User update(String idUser, User user);
 
     boolean delete(String idUser, String idShoppingCart);
 

@@ -63,8 +63,7 @@ class UserServiceImpTest {
         userToUpdate.setDocumentType("CC");
         userToUpdate.setDocumentNumber(998765432);
 
-        User userUpdated = userService.update(userCreated.getFirstName(), userCreated.getLastName(),
-                userCreated.getDocumentType(), userCreated.getDocumentNumber(), userToUpdate);
+        User userUpdated = userService.update(userCreated.getId(), userToUpdate);
 
         Assertions.assertEquals("editFirstname", userUpdated.getFirstName());
         Assertions.assertEquals("edit", userUpdated.getLastName());
