@@ -1,5 +1,6 @@
 package com.acs.seguridad.api.Service;
 
+import com.acs.seguridad.api.enums.UserTypeEnum;
 import com.acs.seguridad.api.model.User;
 import org.springframework.stereotype.Service;
 
@@ -51,6 +52,12 @@ public class UserServiceImp implements UserService{
 
     //Create an user
     public User create(User user) {
+        /*if(user.getUserType() == "ADMIN"){
+            Optional<User> optionalUser = users.stream()
+                    .filter(users -> users.getUserType().equals(user))
+                    .findFirst();
+            return optionalUser.orElse(null);
+        }*/
         user.setId(UUID.randomUUID().toString());
         users.add(user);
 

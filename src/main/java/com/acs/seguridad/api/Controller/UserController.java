@@ -2,7 +2,7 @@ package com.acs.seguridad.api.Controller;
 
 import com.acs.seguridad.api.Service.UserService;
 import com.acs.seguridad.api.model.User;
-import org.apache.coyote.Response;
+import com.acs.seguridad.api.enums.UserTypeEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +15,7 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    UserTypeEnum userTypeEnum;
 
 
 
@@ -42,16 +43,26 @@ public class UserController {
         return Objects.isNull(users) ? ResponseEntity.notFound().build() : ResponseEntity.ok(users);
     }
 
-
     //- The api should allow creating a user.
     //- Only an administrator user can create a user of type buyer and seller.
-    @PostMapping("users")
+    /*@PostMapping("users")
     public ResponseEntity<User> create(@RequestBody User user) {
-
-        if (user.getUserType().equals("Admin")){
+        if (user.getUserType().equals("ADMIN") || user.getUserType().equals("BUYER") || user.getUserType().equals("SELLER") ) {
             return ResponseEntity.ok(userService.create(user));
         }
         return null;
+    }*/
+
+    @PostMapping("users/{ADMIN}")
+    public ResponseEntity<User> create(@RequestBody  User user) {
+        if (user.getUserType().equals("SELLER") || user.getUserType().equals("BUYER")) {
+            return ResponseEntity.ok(userService.create(user));
+        }
+
+        return null;
+        /*if (user.getUserType().equals(userTypeEnum.ADMIN) || user.getUserType().equals(UserTypeEnum.BUYER) || user.getUserType().equals(userTypeEnum.SELLER)) {
+            return ResponseEntity.ok(userService.create(user));
+        }*/
     }
 
 
